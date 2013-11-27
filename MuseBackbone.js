@@ -1,8 +1,8 @@
 (function() {
 	/*
-		NOTE: 
-		- fetched property: it permits to check if the model has been already fetched
-		- stopFetching method: it permits to abort a fetch request in progress
+	NOTE: 
+	- fetched property: it permits to check if the model has been already fetched
+	- stopFetching method: it permits to abort a fetch request in progress
 	*/
 	Backbone.MuseModel= Backbone.Model.extend({
 		constructor: function() {
@@ -13,10 +13,8 @@
 		},
 
 		stopFetching: function() {
-        	if(this._xhr && (this.fetched == false)) {
-            	this._xhr.abort();
-				console.log("fetching aborted");
-            }
+        		if(this._xhr && (this.fetched == false))
+            			this._xhr.abort();
 		},
 
 		fetch: function(opts) {
@@ -41,9 +39,9 @@
 	});
 
 	/*
-		NOTE: 
-		- fetched property: it permits to check if the collection has been already fetched
-		- stopFetching method: it permits to abort a fetch request in progress
+	NOTE: 
+	- fetched property: it permits to check if the collection has been already fetched
+	- stopFetching method: it permits to abort a fetch request in progress
 	*/
 	Backbone.MuseCollection= Backbone.Collection.extend({
 		constructor: function() {
@@ -80,17 +78,17 @@
 	});
 
 	/*
-		NOTE: 
-		- NEW FEATURES: hierachical subviews, detach and attach functionalities, multiple collections and models per view, models and collections fetching management (it stops all the fetching in progress if removed or detached)
+	NOTE: 
+	- NEW FEATURES: hierachical subviews, detach and attach functionalities, multiple collections and models per view, models and collections fetching management (it stops all the fetching in progress if removed or detached)
 
-		- _childrenViews: object that contains all the subviews. Add here all the subViews
-		- models: object that contains additional models needed by the view. Add here all the models that are not the main ones related to the view (this.model)
-		- collections: object that contains additional collections needed by the view. Add here all the collections that are not the main ones related to the view (this.collection)
-		- getChildrenViews: it returns the object that contains all the subviews. Add here all the subViews
-		- detach(stopFetching, noRecursive): it stops any DOM event or Backbone.Event listening on the view. If stopFetching=true any fetching in progress will be aborted. If norecursive=true the subviews won't be detached and they can be detached manually (getChildrenViews -> detach)
-		- _start: callback triggered after the attacching phase. This is called 1. after that the initialization function has been executed for a "new MuseView" 2. after that "attach" has been called. This function should be override in order to execute the code needed for starting the view each time it is attached. Useful for inserting the "listento" needed to run the view properly
-		- _stop: callback triggered after the detaching phase of the view (detach() or remove() called). if some ".on" is set in the middle of the code and it is not included in the events property, this callback can be useful to "off" it.
-		- remove(stopFetching): it removes both the main view and all its subviews. By doing it, it stops every fetching in progress both on in main view and in all its subviews (it calls detach(true))
+	- _childrenViews: object that contains all the subviews. Add here all the subViews
+	- models: object that contains additional models needed by the view. Add here all the models that are not the main ones related to the view (this.model)
+	- collections: object that contains additional collections needed by the view. Add here all the collections that are not the main ones related to the view (this.collection)
+	- getChildrenViews: it returns the object that contains all the subviews. Add here all the subViews
+	- detach(stopFetching, noRecursive): it stops any DOM event or Backbone.Event listening on the view. If stopFetching=true any fetching in progress will be aborted. If norecursive=true the subviews won't be detached and they can be detached manually (getChildrenViews -> detach)
+	- _start: callback triggered after the attacching phase. This is called 1. after that the initialization function has been executed for a "new MuseView" 2. after that "attach" has been called. This function should be override in order to execute the code needed for starting the view each time it is attached. Useful for inserting the "listento" needed to run the view properly
+	- _stop: callback triggered after the detaching phase of the view (detach() or remove() called). if some ".on" is set in the middle of the code and it is not included in the events property, this callback can be useful to "off" it.
+	- remove(stopFetching): it removes both the main view and all its subviews. By doing it, it stops every fetching in progress both on in main view and in all its subviews (it calls detach(true))
 	*/
 	Backbone.MuseView= Backbone.View.extend({
 		constructor: function() {
