@@ -7,7 +7,7 @@ Introduction
 ------------
 I've been coding for some months with Backbone.js on a fairly big Single Page Application and during the development process I started realizing what my common patterns were among my collections, models and views. 
 This little extension summarises what I need in my projects in order to be able to simply include it and play with my stuff at once. 
-I'm not that sure if what I've written is a best practice and there could be tons of other well written libraries that do the job, and they do it well as well.
+I'm not that sure if what I've written is a best practice and there could be tons of other well written libraries that do the job, and they do it well at the same time.
 This humble library summarises my discovery process with Backbone and tries to empower it with what I extra need everyday.
 
 Every piece of suggestion is always welcome!
